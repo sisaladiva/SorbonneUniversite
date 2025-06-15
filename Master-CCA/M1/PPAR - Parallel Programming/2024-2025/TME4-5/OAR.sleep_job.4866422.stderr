@@ -1,0 +1,2 @@
+/var/lib/oar/.batch_job_bashrc: line 5: /home/asmastor/.bashrc: No such file or directory
+## OAR [2024-09-17 11:34:24] Job 4866422 KILLED ##

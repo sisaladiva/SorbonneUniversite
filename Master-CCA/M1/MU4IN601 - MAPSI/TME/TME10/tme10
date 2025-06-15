@@ -1,0 +1,7 @@
+import numpy as np
+
+def exp(rate):
+    rate = np.where(rate == 0, 1e-200, rate)  # Remplace les zéros par 1e-200 pour éviter la division par zéro
+    U = np.random.uniform(0, 1, rate.shape)  # Génère des échantillons uniformes
+    X = -np.log(1 - U) / rate  # Applique la transformation inverse
+    return X

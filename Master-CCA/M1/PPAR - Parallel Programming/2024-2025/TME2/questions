@@ -1,0 +1,70 @@
+question 1 : We can divide the image into n smaller sections and run the algorithm on each section independently. Once all processes have completed, we combine the results into a single unified image
+Question 2: Voir mandel.c 
+Question 3: For 100 processus when we run mpiexec --oversubscribe -n 40 ./mandel 3840 3840 0.35 0.355 0.353 0.358 200
+ we have : 
+
+rank21 Total computing time: 0.135286 sec
+rank23 Total computing time: 0.139159 sec
+rank22 Total computing time: 0.139369 sec
+rank17 Total computing time: 0.156088 sec
+rank19 Total computing time: 0.156546 sec
+rank18 Total computing time: 0.143168 sec
+rank20 Total computing time: 0.157977 sec
+rank15 Total computing time: 0.204343 sec
+rank25 Total computing time: 0.210266 sec
+rank13 Total computing time: 0.245596 sec
+rank14 Total computing time: 0.246168 sec
+rank11 Total computing time: 0.248822 sec
+rank9 Total computing time: 0.279503 sec
+rank10 Total computing time: 0.293904 sec
+rank12 Total computing time: 0.28062 sec
+rank27 Total computing time: 0.323958 sec
+rank26 Total computing time: 0.324036 sec
+rank7 Total computing time: 0.334204 sec
+rank5 Total computing time: 0.342571 sec
+rank6 Total computing time: 0.343182 sec
+rank29 Total computing time: 0.35366 sec
+rank33 Total computing time: 0.381509 sec
+rank3 Total computing time: 0.385669 sec
+rank31 Total computing time: 0.410146 sec
+rank30 Total computing time: 0.409733 sec
+rank28 Total computing time: 0.411098 sec
+rank24 Total computing time: 0.412197 sec
+rank35 Total computing time: 0.41661 sec
+rank34 Total computing time: 0.416269 sec
+rank1 Total computing time: 0.416602 sec
+rank2 Total computing time: 0.41745 sec
+rank4 Total computing time: 0.418374 sec
+rank8 Total computing time: 0.419032 sec
+rank16 Total computing time: 0.420785 sec
+rank39 Total computing time: 0.425807 sec
+rank37 Total computing time: 0.447103 sec
+rank38 Total computing time: 0.44726 sec
+rank36 Total computing time: 0.447929 sec
+rank32 Total computing time: 0.448652 sec
+rank0 Total computing time: 0.483789 sec
+
+
+
+asmastor@gros-123:~$ mpiexec  -n 8 ./mandel 3840 3840 0.35 0.355 0.353 0.358 200
+
+Total computing time: 0.735378 sec
+Total computing time: 0.996196 sec
+Total computing time: 1.18933 sec
+Total computing time: 1.19033 sec
+Total computing time: 1.41712 sec
+Total computing time: 1.41799 sec
+Total computing time: 1.41977 sec
+Total computing time: 1.48468 sec
+
+
+
+Question 3 : Pour avoir le speedup on calcule le temps total en séquentiel et le temps total en parralélisé. Après avoir utilisé time mpiexec -n 1 ./mandel 3840 3840 0.35 0.355 0.353 0.358 200 pour le séquentiel et
+ time mpiexec -n 10 ./mandel 3840 3840 0.35 0.355 0.353 0.358 200
+Temps en séquentiel pour 8 processus: 0m8.645s
+Temps pour le code parallélisé pour 8 processus: 	0m4.687s
+
+Speedup = 8.645 / 4.687 = 1.84 sec
+Efficacité = Speedup / n processus = 1.84/10 = 0.184 = 18%
+
+L'efficacité and the speedup are very low, they are not good

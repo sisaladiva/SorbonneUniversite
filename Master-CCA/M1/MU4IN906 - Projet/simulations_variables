@@ -1,0 +1,49 @@
+import numpy as np
+
+def generate_binomial_variables(n, p, num_samples):
+    # Générer des variables aléatoires uniformes sur [0, 1]
+    uniform_samples = np.random.rand(num_samples)
+
+    # Calculer les variables aléatoires binomiales en utilisant la fonction de répartition inverse
+    binomial_variables = np.zeros(num_samples, dtype=int)
+    for k in range(num_samples):
+        cumulative_prob = 0
+        for i in range(n):
+            cumulative_prob += p
+            if uniform_samples[k] <= cumulative_prob:
+                binomial_variables[k] = binomial_variables[k] + 1
+
+    return binomial_variables
+
+# Exemple d'utilisation avec n=5, p=0.3, et 10 échantillons
+n = 5
+p = 0.3
+num_samples = 10
+result = generate_binomial_variables(n, p, num_samples)
+
+print("Échantillons générés:", result)
+
+
+
+#exponentielle
+
+import random
+import math
+
+def generate_exponential_variable(lmbda):
+    # Générer un échantillon U uniformément distribué sur [0, 1]
+    u = random.uniform(0, 1)
+
+    # Appliquer la transformation pour obtenir une variable exponentielle
+    x = -1.0 / lmbda * math.log(1 - u)
+
+    return x
+
+# Exemple d'utilisation avec lambda = 0.5 et génération de 5 échantillons
+lmbda = 0.5
+num_samples = 5
+
+# Générer et afficher les échantillons
+for i in range(num_samples):
+    sample = generate_exponential_variable(lmbda)
+    print(f"Échantillon {i+1} : {sample}")
